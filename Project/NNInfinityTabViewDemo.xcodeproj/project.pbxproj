@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8724656F19260DAE00D079CC /* NNInfinityTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8724656C19260DAE00D079CC /* NNInfinityTabView.m */; };
+		8724657019260DAE00D079CC /* NNInfinityTabViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8724656E19260DAE00D079CC /* NNInfinityTabViewItem.m */; };
 		87E404981919FFEA000F80B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E404971919FFEA000F80B3 /* Foundation.framework */; };
 		87E4049A1919FFEA000F80B3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E404991919FFEA000F80B3 /* CoreGraphics.framework */; };
 		87E4049C1919FFEA000F80B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E4049B1919FFEA000F80B3 /* UIKit.framework */; };
@@ -19,8 +21,6 @@
 		87E404B31919FFEA000F80B3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87E4049B1919FFEA000F80B3 /* UIKit.framework */; };
 		87E404BB1919FFEA000F80B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87E404B91919FFEA000F80B3 /* InfoPlist.strings */; };
 		87E404BD1919FFEA000F80B3 /* NNInfinityTabViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E404BC1919FFEA000F80B3 /* NNInfinityTabViewTests.m */; };
-		87E404CA191A1175000F80B3 /* NNInfinityTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E404C9191A1175000F80B3 /* NNInfinityTabView.m */; };
-		87E404CD191A2994000F80B3 /* NNInfinityTabViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E404CC191A2994000F80B3 /* NNInfinityTabViewItem.m */; };
 		87E404D0191A35D8000F80B3 /* NNRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E404CF191A35D8000F80B3 /* NNRootViewController.m */; };
 		87E404D3191CC14E000F80B3 /* NNDemoTabViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E404D2191CC14E000F80B3 /* NNDemoTabViewItem.m */; };
 /* End PBXBuildFile section */
@@ -36,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8724656B19260DAE00D079CC /* NNInfinityTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNInfinityTabView.h; sourceTree = "<group>"; };
+		8724656C19260DAE00D079CC /* NNInfinityTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNInfinityTabView.m; sourceTree = "<group>"; };
+		8724656D19260DAE00D079CC /* NNInfinityTabViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNInfinityTabViewItem.h; sourceTree = "<group>"; };
+		8724656E19260DAE00D079CC /* NNInfinityTabViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNInfinityTabViewItem.m; sourceTree = "<group>"; };
 		87E404941919FFE9000F80B3 /* NNInfinityTabViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NNInfinityTabViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E404971919FFEA000F80B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		87E404991919FFEA000F80B3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -52,10 +56,6 @@
 		87E404B81919FFEA000F80B3 /* NNInfinityTabViewDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNInfinityTabViewDemoTests-Info.plist"; sourceTree = "<group>"; };
 		87E404BA1919FFEA000F80B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		87E404BC1919FFEA000F80B3 /* NNInfinityTabViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNInfinityTabViewTests.m; sourceTree = "<group>"; };
-		87E404C8191A1175000F80B3 /* NNInfinityTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNInfinityTabView.h; sourceTree = "<group>"; };
-		87E404C9191A1175000F80B3 /* NNInfinityTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNInfinityTabView.m; sourceTree = "<group>"; };
-		87E404CB191A2994000F80B3 /* NNInfinityTabViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNInfinityTabViewItem.h; sourceTree = "<group>"; };
-		87E404CC191A2994000F80B3 /* NNInfinityTabViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNInfinityTabViewItem.m; sourceTree = "<group>"; };
 		87E404CE191A35D8000F80B3 /* NNRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNRootViewController.h; sourceTree = "<group>"; };
 		87E404CF191A35D8000F80B3 /* NNRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNRootViewController.m; sourceTree = "<group>"; };
 		87E404D1191CC14E000F80B3 /* NNDemoTabViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNDemoTabViewItem.h; sourceTree = "<group>"; };
@@ -86,10 +86,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8724656919260DAE00D079CC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8724656A19260DAE00D079CC /* ios */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		8724656A19260DAE00D079CC /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				8724656B19260DAE00D079CC /* NNInfinityTabView.h */,
+				8724656C19260DAE00D079CC /* NNInfinityTabView.m */,
+				8724656D19260DAE00D079CC /* NNInfinityTabViewItem.h */,
+				8724656E19260DAE00D079CC /* NNInfinityTabViewItem.m */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		87E4048B1919FFE9000F80B3 = {
 			isa = PBXGroup;
 			children = (
-				87E404C6191A0EB5000F80B3 /* Classes */,
+				8724656919260DAE00D079CC /* Classes */,
 				87E4049D1919FFEA000F80B3 /* Demo */,
 				87E404B61919FFEA000F80B3 /* NNInfinityTabViewTests */,
 				87E404961919FFEA000F80B3 /* Frameworks */,
@@ -160,25 +180,6 @@
 				87E404B91919FFEA000F80B3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		87E404C6191A0EB5000F80B3 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				87E404C7191A0EB5000F80B3 /* ios */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		87E404C7191A0EB5000F80B3 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				87E404C8191A1175000F80B3 /* NNInfinityTabView.h */,
-				87E404C9191A1175000F80B3 /* NNInfinityTabView.m */,
-				87E404CB191A2994000F80B3 /* NNInfinityTabViewItem.h */,
-				87E404CC191A2994000F80B3 /* NNInfinityTabViewItem.m */,
-			);
-			path = ios;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,9 +281,9 @@
 				87E404A81919FFEA000F80B3 /* NNAppDelegate.m in Sources */,
 				87E404A41919FFEA000F80B3 /* main.m in Sources */,
 				87E404D3191CC14E000F80B3 /* NNDemoTabViewItem.m in Sources */,
+				8724656F19260DAE00D079CC /* NNInfinityTabView.m in Sources */,
 				87E404D0191A35D8000F80B3 /* NNRootViewController.m in Sources */,
-				87E404CD191A2994000F80B3 /* NNInfinityTabViewItem.m in Sources */,
-				87E404CA191A1175000F80B3 /* NNInfinityTabView.m in Sources */,
+				8724657019260DAE00D079CC /* NNInfinityTabViewItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
