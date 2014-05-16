@@ -40,6 +40,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _itemFitPosition = NNInfinityTabViewScrollPositionNone;
         _infinityMode = YES;
         _selectedIndex = -1;
         _itemReuseQueues = @[].mutableCopy;
@@ -460,6 +461,8 @@
 
 - (void)_panGestureHandler:(UIPanGestureRecognizer *)recognizer
 {
+    if (_itemFitPosition == NNInfinityTabViewScrollPositionNone) return;
+    
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         //NSLog(@"%f", [recognizer velocityInView:self].y);
         
