@@ -11,7 +11,7 @@
 #import "NNInfinityTabView.h"
 #import "NNDemoTabViewItem.h"
 
-#define NUM_OF_ITEM 7
+#define NUM_OF_ITEM 4
 
 @interface NNRootViewController ()<NNInfinityTabViewDataSource, NNInfinityTabViewDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -42,7 +42,7 @@
         [_randomColors addObject:[self _randomColor]];
     }
     
-    NNInfinityTabView *tabView = [[NNInfinityTabView alloc] initWithFrame:self.view.bounds direction:NNInfinityTabViewDirectionVertical];
+    NNInfinityTabView *tabView = [[NNInfinityTabView alloc] initWithFrame:self.view.bounds direction:NNInfinityTabViewDirectionHorizontal];
     tabView.dataSource = self;
     tabView.delegate = self;
     tabView.infinityMode = YES;
@@ -71,7 +71,7 @@
 - (void)infinityTabView:(NNInfinityTabView *)infinityTabView didSelectItemAtIndex:(NSInteger)index
 {
     //[infinityTabView deselectItemAtIndex:index animated:YES];
-    [infinityTabView scrollToItemAtIndex:index atScrollPosition:NNInfinityTabViewScrollPositionNone animated:YES];
+    [infinityTabView scrollToItemAtIndex:index atScrollPosition:NNInfinityTabViewScrollPositionLeft animated:YES];
 }
 
 

@@ -305,7 +305,9 @@
             point = rect.origin;
         }
         if (!_infinityMode && self.contentSize.width - CGRectGetWidth(self.bounds) < point.x) {
-            point = CGPointMake(self.contentSize.width - CGRectGetWidth(self.bounds), point.x);
+            CGFloat x = self.contentSize.width - CGRectGetWidth(self.bounds);
+            x = (x<=0.)?0.:x;
+            point = CGPointMake(x, point.y);
         }
     } else {
         if (scrollPosition == NNInfinityTabViewScrollPositionMiddle) {
@@ -316,7 +318,9 @@
             point = rect.origin;
         }
         if (!_infinityMode && self.contentSize.height - CGRectGetHeight(self.bounds) < point.y) {
-            point = CGPointMake(point.x, self.contentSize.height - CGRectGetHeight(self.bounds));
+            CGFloat y = self.contentSize.height - CGRectGetHeight(self.bounds);
+            y = (y<=0.)?0.:y;
+            point = CGPointMake(point.x, y);
         }
     }
     [self setContentOffset:point animated:animated];
