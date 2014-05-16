@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NNInfinityTabView"
-  s.version      = "head"
+  s.version      = "0.0.1"
   s.summary      = "NNInfinityTabView"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author             = { "Naoto Horiguchi" => "naoto.horiguchi@gmail.com" }

@@ -407,7 +407,7 @@
 {
     [super touchesBegan:touches withEvent:event];
     CGPoint point = [[touches anyObject] locationInView:self];
-    int index = [self _indexForItemAtPoint:point];
+    NSInteger index = [self _indexForItemAtPoint:point];
     if (index >= 0) {
         _touchedIndex = index;
         NNInfinityTabViewItem *item = [self _itemAtIndex:_touchedIndex];
@@ -425,7 +425,7 @@
     [super touchesEnded:touches withEvent:event];
     CGPoint point = [[touches anyObject] locationInView:self];
     NSLog(@"%@", NSStringFromCGPoint(point));
-    int index = [self _indexForItemAtPoint:point];
+    NSInteger index = [self _indexForItemAtPoint:point];
     if (_touchedIndex >= 0 && _touchedIndex == index) {
         NNInfinityTabViewItem *item = [self _itemAtIndex:_touchedIndex];
         item.highlighted = NO;
