@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, NNInfinityTabViewScrollPosition) {
 @property (nonatomic, weak) id<NNInfinityTabViewDataSource>dataSource;
 @property (nonatomic, weak) id<NNInfinityTabViewDelegate>delegate;
 @property (nonatomic) BOOL infinityMode; // default YES
-@property (nonatomic, readonly) NNInfinityTabViewScrollPosition itemFitPosition; // default NNInfinityTabViewScrollPositionNone;
+@property (nonatomic) NNInfinityTabViewScrollPosition scrollFinishPosition; // default NNInfinityTabViewScrollPositionNone;
 
 - (instancetype)initWithFrame:(CGRect)frame direction:(NNInfinityTabViewDirection)direction;
 

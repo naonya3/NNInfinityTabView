@@ -20,7 +20,7 @@
     CADisplayLink *_displayLink;
     NSTimeInterval _startTimestamp;
     //CGPoint _velocity;
-    CGFloat _lastDistance;
+    CGPoint _lastDistance;
     CGFloat _duration;
     CGPoint _scrollToPoint;
     CGPoint _scrollFromPoint;
@@ -40,7 +40,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _itemFitPosition = NNInfinityTabViewScrollPositionNone;
+        _scrollFinishPosition = NNInfinityTabViewScrollPositionNone;
         _infinityMode = YES;
         _selectedIndex = -1;
         _itemReuseQueues = @[].mutableCopy;
@@ -429,7 +429,6 @@
 {
     [super touchesEnded:touches withEvent:event];
     CGPoint point = [[touches anyObject] locationInView:self];
-    NSLog(@"%@", NSStringFromCGPoint(point));
     NSInteger index = [self _indexForItemAtPoint:point];
     if (_touchedIndex >= 0 && _touchedIndex == index) {
         NNInfinityTabViewItem *item = [self _itemAtIndex:_touchedIndex];
@@ -465,19 +464,23 @@
 
 - (void)_panGestureHandler:(UIPanGestureRecognizer *)recognizer
 {
-    if (_itemFitPosition == NNInfinityTabViewScrollPositionNone) return;
+    if (_scrollFinishPosition == NNInfinityTabViewScrollPositionNone) return;
+    
+    _displayLink.paused = YES;
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        //NSLog(@"%f", [recognizer velocityInView:self].y);
-        
-        CGFloat d = [recognizer velocityInView:self].y * 0.14;
-        NSInteger targetItemIndex = [self _indexForItemAtPoint:CGPointMake(0, self.bounds.origin.y)];
-        
-        _scrollToPoint = CGPointMake(0, self.contentOffset.y + d);//[self _rectForItemAtIndex:targetItemIndex+2].origin;
+        CGPoint velocity = [recognizer velocityInView:self];
+        if (_direction == NNInfinityTabViewDirectionHorizontal) {
+            CGFloat d = velocity.x * 0.08;
+            _scrollToPoint = CGPointMake(self.bounds.origin.x - d, self.bounds.origin.y);
+        } else {
+            CGFloat d = velocity.y * 0.08;
+            _scrollToPoint = CGPointMake(self.bounds.origin.x, self.bounds.origin.y + d);
+        }
         _scrollFromPoint = self.bounds.origin;
-        _lastDistance = 0;
+        _lastDistance = CGPointZero;
         _startTimestamp = CACurrentMediaTime();
-        _duration = 0.44;
+        _duration = 0.24;
         _displayLink.paused = NO;
         [self setContentOffset:self.bounds.origin animated:NO];
     }
@@ -487,17 +490,22 @@
 
 - (void)_displayUpdateHandler:(CADisplayLink *)link
 {
-    //NSLog(@"%f",link.timestamp-_startTimestamp);
     if (_duration > link.timestamp-_startTimestamp) {
-        CGFloat y = [self easeOutWithT:link.timestamp-_startTimestamp b:0 c:_scrollToPoint.y-_scrollFromPoint.y d:_duration];
-        self.contentOffset = CGRectMake(0, self.bounds.origin.y + (_lastDistance-y), self.bounds.size.width, self.bounds.size.height).origin;
-        NSLog(@"%f",_lastDistance-y);
-        _lastDistance = y;
-
+        CGFloat y = [self easeOutWithT:link.timestamp-_startTimestamp b:0 c:_scrollToPoint.y - _scrollFromPoint.y d:_duration];
+        CGFloat x = [self easeOutWithT:link.timestamp-_startTimestamp b:0 c:_scrollToPoint.x - _scrollFromPoint.x d:_duration];
+        self.contentOffset = CGRectMake(self.bounds.origin.x + (x-_lastDistance.x), self.bounds.origin.y + (_lastDistance.y-y), self.bounds.size.width, self.bounds.size.height).origin;
+        _lastDistance = CGPointMake(x, y);
     } else {
+        NSInteger index;
+        if (_scrollFinishPosition == NNInfinityTabViewScrollPositionLeft || _scrollFinishPosition == NNInfinityTabViewScrollPositionTop) {
+            index = [self _indexForItemAtPoint:self.bounds.origin];
+        } else if (_scrollFinishPosition == NNInfinityTabViewScrollPositionMiddle){
+            index = [self _indexForItemAtPoint:CGPointMake(self.bounds.origin.x + (self.bounds.size.width /2), self.bounds.origin.y + (self.bounds.size.height/2))];
+        } else if (_scrollFinishPosition == NNInfinityTabViewScrollPositionBottom || _scrollFinishPosition == NNInfinityTabViewScrollPositionRight){
+            index = [self _indexForItemAtPoint:CGPointMake(self.bounds.origin.x + self.frame.size.width - 1, self.bounds.origin.y + self.frame.size.height - 1)];
+        }
+        [self scrollToItemAtIndex:index atScrollPosition:_scrollFinishPosition animated:YES];
         _displayLink.paused = YES;
-        NSLog(@"Bounds: %@",NSStringFromCGPoint(self.bounds.origin));
-        NSLog(@"Offset: %@",NSStringFromCGPoint(self.contentOffset));
     }
 }
 
@@ -506,7 +514,6 @@
     t /= d;
     t = t - 1.;
     return c * ( t * t * t + 1.) + b;
-    
 //    return c * (-(pow(2.0,(-10.0 * t/d))) + 1) + b;
 }
 
