@@ -287,7 +287,10 @@
     if (internalIndex < 0) {
         internalIndex = index;
     }
-    return [[_itemRects objectAtIndex:internalIndex] CGRectValue];
+    if (_itemRects.count > internalIndex) {
+        return [[_itemRects objectAtIndex:internalIndex] CGRectValue];
+    }
+    return CGRectZero;
 }
 
 - (void)scrollToItemAtIndex:(NSInteger)index atScrollPosition:(NNInfinityTabViewScrollPosition)scrollPosition animated:(BOOL)animated
